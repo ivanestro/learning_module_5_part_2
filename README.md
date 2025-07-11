@@ -4,9 +4,11 @@
 Introduction to Unit Testing
 
 ## Author
-Student Name
+
+Ivan Estropigan
 
 ## Demonstration Topics
+
 - Unit Testing
 - Benefits of Unit Testing
 - Directory Structure for Source Code and Tests
@@ -16,3 +18,5 @@ Student Name
 - Testing Edge Cases
 - Testing with Mock Objects
 - Testing Exceptions
+
+## What 
