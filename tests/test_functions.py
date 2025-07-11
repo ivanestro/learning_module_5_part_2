@@ -30,6 +30,7 @@ class TestFunctions(unittest.TestCase):
         # Assert compares two values 
         self.assertEqual(expected, actual)
 
+    
     def test_grade_outcome_a_plus(self):
         # Arrange
         grade = 91
@@ -40,4 +41,31 @@ class TestFunctions(unittest.TestCase):
 
         # Assert 
         self.assertEqual(expected, actual)
-        self
+
+    def test_grade_outcome_pass(self):
+        # Arrange
+        grade = 76
+        expected = "Pass"
+
+        # Act 
+        actual = grade_outcome(grade)
+
+        # Assert 
+        self.assertEqual(expected, actual)
+
+    
+    def test_grade_outcome_pass(self):
+        # Arrange
+        grade = 76
+        low_edge = 50
+        high_edge = 90
+        expected = "Pass"
+
+        # Act
+        # Comment out actual = grade_outcome(grade)
+
+        # Act and Assert, including edge cases
+        self.assertEqual(expected, grade_outcome(grade))
+        self.assertEqual(expected, grade_outcome(low_edge))
+
+        
