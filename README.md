@@ -378,8 +378,8 @@ def test_grade_outcome_pass(self):
  
     # Act and Assert, including edge cases
     self.assertEqual(expected, grade_outcome(grade))
-    self.assertEqual(expected, grade_outcome(low_edge)))
-    self.assertEqual(expected, grade_outcome(high_edge)))
+    self.assertEqual(expected, grade_outcome(low_edge))
+    self.assertEqual(expected, grade_outcome(high_edge))
 ```
 
 - Run the tests and ensure it passes
@@ -399,8 +399,56 @@ def test_grade_outcome_fail(self):
 
     # Act and Assert, including edge cases
     self.assertEqual(expected, grade_outcome(grade))
-    self.assertEqual(expected, grade_outcome(high_edge)))
-    self.assertEqual(expected, grade_outcome(negative)))
+    self.assertEqual(expected, grade_outcome(high_edge))
+    self.assertEqual(expected, grade_outcome(negative))
 ```
 
 - Run the test and ensure it passes
+
+## Functions.Py
+
+- Return to functions.py
+- Review the prompt_name_greting function.
+- What are the possible outcomes?
+
+```cs
+def prompt_name_greeting (grade: int) -> str:
+    name = input("Enter your name: ")
+    city = input("Enter your current city: ")
+
+    return f"Your name is {name} and your current city is {city}."
+```
+
+- Outcomes:
+Your name is {name} and your current city is {city}.
+
+## Third Set Of Tests
+
+- Your name is {name} and your current city is {city}
+  - Update the import Statement:
+
+```cs
+from src.functions import greet_name_age, grade_outcome, prompt_name_greeting
+```
+
+- The prompt_name_greeting function involves user interaction - the input function is used to prompt the user for a name and a city.
+- Unit tests should run without the need to pause for user input.
+- The user input can be 'mocked' within unit tests
+
+## Mocking In Tests
+
+- Mock objects are used in unit testing to simulate the behavior of real objects or dependencies that are not part of the unit being tested.
+
+- Using mocks can help isolate the unit being tested and ensure that the test only focuses on the behavior of the unit itself.
+
+- Python's built-in unittest.mock module provides a powerful framework for creating using mock objects.
+
+- Note the given import statement:
+
+```cs
+from unittest.mock import patch
+```
+
+- When testing a function that uses the input function, you might want to simulate user input without acutally requiring user interaction
+
+- By 'patching' the input function you can control what values are returned by input during the test, allowing you to test different scenarios and edge cases.

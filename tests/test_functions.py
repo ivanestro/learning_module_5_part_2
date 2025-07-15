@@ -12,7 +12,7 @@ Usage: To execute the unit tests:
 
 import unittest
 from unittest.mock import patch
-from src.functions import greet_name_age, grade_outcome
+from src.functions import greet_name_age, grade_outcome, prompt_name_greeting
 
 
 class TestFunctions(unittest.TestCase):
@@ -47,7 +47,7 @@ class TestFunctions(unittest.TestCase):
         grade = 76
         low_edge = 50
         high_edge = 90
-        expected = "A+"
+        expected = "Pass"
 
         # Act
         # Commented out actual = grade_outcome(grade)
@@ -68,3 +68,21 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(expected, grade_outcome(grade))
         self.assertEqual(expected, grade_outcome(high_edge))
         self.assertEqual(expected, grade_outcome(negative))
+
+
+    def prompt_name_greeting_correct_output(self):
+        # builtins.input <-- Allows us to mock input
+        # builtins.print <-- Allows us to mock print
+        with patch('builtins.input') as mock_input:
+            # Arrange
+            # The side_effect list below 'mocks' input
+            # Values that are prompted for in the function:
+            mock_input.side_effect = ["Joe", "Winnipeg"]
+            expected = "Hello Joe, you are from Winnipeg!"
+
+            # Act (Act within the patch context)
+            actual = prompt_name_greeting()
+
+            # Assert
+            self.assertEqual(expected, actual)
+            

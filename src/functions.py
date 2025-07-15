@@ -48,7 +48,7 @@ def grade_outcome(grade: int) -> str:
 
     else:
         output = "Fail"
-        
+
     return output
 
 def prompt_name_greeting()->str:
