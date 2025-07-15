@@ -636,3 +636,51 @@ python -m unittest tests/test_functions.py
 - The course notes provide additional content on the subjects of Functions and Unit Testing.
 - This lecture focused on the techniques needed to complete Assignment 5.
 
+## Defining Functions
+
+A Function is a small, reusable pieces of code that performs a specific task. In Python you, create a function using the def keyword, followed by a unique identifier, parentheses, parameters and a colon. The indented lines following the colon make up the function body.
+
+Here's a simple function example with comments to explain the code:
+
+```python
+def greet() -> None:
+  """
+  Description:
+    Prints a greeting message to the console.
+
+  When this function is called, print the message "Hello World" to the console.
+  """
+
+  print("Hello World")
+  
+  # Invoke the function by its name.
+
+greet()
+```
+
+## Benefits Of Using Functions
+
+Functions provide several benefits making your code more efficient, organized and easier to maintain:
+
+- **Modularity**: Functions break complex tasks into smaller, manageable pieces, simplifying your program's structure.
+
+- **Reusability**: Functions can be called multiple times from different parts of your code, preventing repetitive code and saving time.
+
+- **Maintainability**: Functions improve code maintainability by making it more organized and readable. If you need to make changes, you can update the function instead of editing multiple instances of the same code.
+
+- **Debugging**: Functions make it easier to identify and resolve bugs by dividing code into smaller units. You can test each function seperately to ensure they work correctly before integrating them.
+
+- **Abstraction**: Functions hide the complexity of specific tasks, simplifying code comprehension. You can execute a task by calling a function without knowing its inner workings.
+
+Understanding and effectively using functions are crucial for creating clean, efficient and maintainable python programs. Throughout the course, you'll encounter more examples and use cases for functions in python.
+
+## Function Definition And Syntax
+
+The syntax of a function is:
+
+```py
+def method_identifier(parameter_list, ...):
+    # Implementation
+```
+
+In Python, functions are defined using the def keyword, followed by a unique function identifier, paraentheses containing parameters (optional), and a colon(:)
