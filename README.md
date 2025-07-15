@@ -561,3 +561,72 @@ def test_math_operation_bad_operator_raises_exception(self):
 Ran 7 tests in 0.000s
 OK
 ```
+
+## Final Test
+
+- Outcome to test:
+  - An exception when an operand has the wrong data type.
+
+```cs
+def test_math_operation_non_numeric_operand_raises_exception(self):
+    # Arrange
+    operand1 = "30"  # <- non-numeric
+    operand2 = 20
+    operator = "-"
+
+    # Act and Assert
+    # assertRaises(ValueError) <-- because function raises 
+    # ValueError when an invalid operator is provided
+    with self.assertRaises(TypeError) as context:
+        math_operation(operand1, operand2, operator)
+            
+   # In this case, we don't control the exception message
+   # because it is not raised explicitly by the programmer
+   # Therefore, no assert for the error message.
+```
+
+## Integration Test
+
+- Each of the functions in function.py have been individually tested(unit tested)
+
+- A final test may involve integrating each of the functions into a single block of code to ensure they work fine together.
+
+- Return to functions.py
+
+- Code the following at the bottom of the editor:
+
+```cs
+print( math_operation(1, 2, "+") )
+print( prompt_name_greeting() )
+```
+
+- Run the python application (functions.py, not the test):
+
+```cs
+3
+Enter your name: {your name}
+Enter your current city: {your city}
+Your name is {name} and your current city is {city}.
+```
+
+- Now run the Unit Test:
+
+```cs
+python -m unittest tests/test_functions.py
+```
+
+- Note  the unit test operation is being interrupted by the prompts for name and city
+
+```cs
+![alt text](image.png)
+```
+
+## Main Guard
+
+- A main guard can be added to the source code to run the individual tests in an integrated way, but will not execute when the unit tests are run.
+
+- A main guard, checks the context from which the code is being called.
+
+- If the function.py file is being directly executed, then the code in the main guard will execute.
+
+- If the code in functions.py is being indirectly executed (e.g by way of unit tests) then the code in the main guard will not execute.

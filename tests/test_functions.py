@@ -11,7 +11,7 @@ Usage: To execute the unit tests:
 """
 
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch 
 from src.functions import greet_name_age, grade_outcome, prompt_name_greeting, math_operation
 
 
@@ -127,3 +127,20 @@ class TestFunctions(unittest.TestCase):
             math_operation(operand1, operand2, operator)
 
         self.assertEqual(expected, str(context.exception))
+    
+    def test_math_operation_non_numeric_operand_raises_exception(self):
+        # Arrange
+        operand1 = "30" # <- Non-Numeric
+        operand2 = 20
+        operator = "-"
+
+        # Act And Assert
+        # assertRaises(ValueError) <-- Because function raises
+        # ValueError when an invalid operator is provided
+        with self.assertRaises(TypeError) as context:
+            math_operation(operand1, operand2, operator)
+
+        # In this case, we don't control the exception message
+        # Because it is not raised explicitly by the programmer
+        # Therefore, no assert for the error message.
+

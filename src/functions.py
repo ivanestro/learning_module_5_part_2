@@ -51,7 +51,7 @@ def grade_outcome(grade: int) -> str:
 
     return output
 
-def prompt_name_greeting()->str:
+def prompt_name_greeting() ->str:
     """
     Description:
         Prompts the user for their name and city, and returns a phrase including both values.
@@ -67,6 +67,7 @@ def prompt_name_greeting()->str:
     city = input("Enter your current city: ")
 
     return f"Your name is {name} and your current city is {city}."
+
 
 
 
@@ -97,3 +98,15 @@ def math_operation(operand1: int, operand2: int, operation: str = "+")-> float:
         raise ValueError("Invalid operation.")
 
     return result
+
+
+def integration() -> None:
+    """
+    Description:
+        
+    """
+    print(math_operation(1, 2, "+"))
+    print(prompt_name_greeting())
+    
+if __name__ == "__main__":
+    integration()
