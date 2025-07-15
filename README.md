@@ -630,3 +630,9 @@ python -m unittest tests/test_functions.py
 - If the function.py file is being directly executed, then the code in the main guard will execute.
 
 - If the code in functions.py is being indirectly executed (e.g by way of unit tests) then the code in the main guard will not execute.
+
+## Additional Function and Unit Test Content
+
+- The course notes provide additional content on the subjects of Functions and Unit Testing.
+- This lecture focused on the techniques needed to complete Assignment 5.
+

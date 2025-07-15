@@ -103,7 +103,7 @@ def math_operation(operand1: int, operand2: int, operation: str = "+")-> float:
 def integration() -> None:
     """
     Description:
-        
+    
     """
     print(math_operation(1, 2, "+"))
     print(prompt_name_greeting())
