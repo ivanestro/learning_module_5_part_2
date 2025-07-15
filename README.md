@@ -1034,4 +1034,206 @@ You can return multiple tuples from a function by separating them with commas
 
 ## Parameters And Arguments
 
-- Sleep, Wake up and code C: 1:56 AM
+### Default Parameter Values
+
+In Python, you can make your functions more flexible by using default parameters and keyword arguments. This allows you to provide default values for parameters and specify arguments in any order when calling a function. 
+
+You can assign default values to parameters in your function definition. If the caller does not provide a value for a parameter, the default value is used instead.
+
+```py
+def greet(name: str, greeting: str = "Hello") -> None:
+  """
+  Description:
+    Prints a personalized greeting message to the console.
+
+  Given a name and an optional greeting as arguments, this function prints a personalized greeting message to the console.
+
+  Args:
+    name (str): The name of the person to greet.
+    greeting (str, optional): The greeting to use. Default to "Hello".
+  """
+  print(f"{greeting}, {name}!")
+
+# Uses the default greeting value
+greet("Alice")
+
+# Provides a custom greeting value
+greet("Bob", "Hi")
+```
+
+```cs
+Hello, Alice!
+Hi, Bob
+```
+
+### Keyword Parameters
+
+You can use keyword arguments to specify values for parameters when calling a function. This allows you to provide values for parameters in any order.
+
+```py
+def display_person_info(name: str, age: int, city: str) -> None:
+  """
+  Description:
+    Prints a person's information to the console
+
+  Given the name, age, city as arguments this function prints a message to the console describing the person's information.
+
+  Args:
+    name (str): The name of the person.
+    age (int): The age of the person.
+    city(str): The city where the person lives.
+  """
+
+  print(f"{name} is {age} years old and lives in {city}.")
+
+display_person_info(name = "Alice", city = "New York", age = 30)
+
+```
+
+### Mixing Positional And Keyword Arguments
+
+When calling a function, you can mix positional arguments and keyword arguments. However, all positional arguments must come before keyword arguments.
+
+```py
+display_person_info("Alice", city="New York", age = 30)
+
+# Remember that when using both positional and keyword argument, you 
+# Cannot provide a value for a parameter more than once.
+```
+
+## Passing Parameters By Object Reference
+
+Understanding how Python function parameters are passed it is important for managing variables and their values in your program. Python passes parameters by object reference, which means that the reference to the object is passed, not the object itself. This has different implications for mutable and immutable objects.
+
+## Immutable vs Mutable parameters
+
+Immutable objects cannot be changed after they are created. When an immutable object is passed to a function, any modification to that object inside the function does not affect the original object outside the function. The following are some common immutable data are types in Python:
+    - Integer
+    - Float
+    - String
+    - Tuple
+    - Boolean
+
+Mutable objects can be changed after they are created. When a mutable object is passed to a function, any modification to that object inside the function also affects the original object outside the function. The following are some common mutable data types in Python:
+    - List
+    - Dictionary
+    - Sets
+
+## Effect Of Function Calls On Immutable Parameters
+
+In this example we pass an immutable object (a string) to a function, modify it inside the function, and then print the value after the function call.
+
+```py
+def change_string(input_string: str) -> None:
+  """
+  Description:
+    Modifies an input string by appending additional text.
+
+  Args:
+    input_string (str) The input string to be modified.
+  """
+  input_string += "Modified inside function"
+
+original_string = "Original string"
+change_string(original_string)
+print(original_string) # Outputs "Original string"
+```
+
+As expected, the original string is not modified because strings are immutable
+
+## Effect Of Function Calls On Mutable Parameters
+
+In this example, we pass a mutable object (a list) to a function, modify it inside the function, and then print the value after the function call.
+
+```py
+def modify_list(input_list: list) -> None:
+  """
+  Description:
+    Modifies input list by appending a new element.
+
+  Args:
+    input_list (list): The input list to be modified.
+  """
+  input_list.append("New Item")
+
+original_list = ["Item 1", "Item 2"]
+modify_list(original_list)
+print(original_list)
+```
+
+Output
+
+```py
+['Item 1', 'Item 2', 'New Item']
+```
+
+## Programming Challenge
+
+1. Define a function called calculate that takes two parameters: first_number and second_number. Set second_number to a default value of 1. Inside the function, perform additional, subtraction, multiplication, and division operations on first_number and second_number. Print the result of all four operations.
+
+2. Test your function by calling it with different combinations of positional and keyword arguments.
+
+Example Output:
+
+```py
+calculate(10)
+print()
+
+calculate(20, 5)
+print()
+
+calculate(first_number=15)
+print()
+
+calculate(first_number=12, second_number=3)
+```
+
+Output:
+
+```cs
+Addition: 11
+Subtraction: 9
+Multiplication: 10
+Division: 10.0
+
+Addition: 25
+Subtraction: 15
+Multiplication: 100
+Division: 4.0
+
+Addition: 16
+Subtraction: 14
+Multiplication: 15
+Division: 15.0
+
+Addition: 15
+Subtraction: 9
+Multiplication: 36
+Division: 4.0
+```
+
+## Review Questions For Parameters And Arguments
+
+1. What are default parameter values, and how do you use them in a function definition?
+
+    Default parameters is a value that automatically used by function and it does not need to provide a passing argument.
+
+2. What are keyword arguments, and how do they help when calling a function?
+
+    keyword arguments lets you specify what parameter you are passing a value to. it makes the code structure clear so you know what each value means, safer to reduce coding mistakes such as missing values.
+
+3. What is the rule for mixing positional and keyword arguments when calling a function?
+
+    Positional argument must come first, followed by a keyword argument when calling a function.
+
+4. How are parameters passed in Python functions?
+
+    Parameters is passed by assignment, it assigns the arguments object to a function parameter, if the object is mutable such as a list or a dictionary they change inside the function to affect the original value, or if the object is immutable such as int, string, tuple changes inside the function to create a new object that does not affect the current values basically adding another value to the list.
+
+5. What is the difference between immutable and mutable objects in terms of how they are affected when passed to functions?
+
+    The difference between immutable and mutable object is:
+
+    Immutable cannot be changed inside a function if you try to modify them a new object is created instead.
+
+    Mutable object can be changed inside a function where the original values will not be affected but can just add things inside the existing ones. An inventory for example.

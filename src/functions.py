@@ -170,6 +170,89 @@ print(get_product_and_quotient(2,3))
 print(get_product_and_quotient(5,2))
 print(get_product_and_quotient(10,5))
 
+
+def greet(name: str, greeting: str = "Hello") -> None:
+  """
+  Description:
+    Prints a personalized greeting message to the console.
+
+  Given a name and an optional greeting as arguments, this function prints a personalized greeting message to the console.
+
+  Args:
+    name (str): The name of the person to greet.
+    greeting (str, optional): The greeting to use. Default to "Hello".
+  """
+  print(f"{greeting}, {name}!")
+
+# Uses the default greeting value
+greet("Alice")
+
+# Provides a custom greeting value
+greet("Bob", "Hi")
+
+def display_person_info(name: str, age: int, city: str) -> None:
+  """
+  Description:
+    Prints a person's information to the console
+
+  Given the name, age, city as arguments this function prints a message to the console describing the person's information.
+
+  Args:
+    name (str): The name of the person.
+    age (int): The age of the person.
+    city(str): The city where the person lives.
+  """
+
+  print(f"{name} is {age} years old and lives in {city}.")
+
+display_person_info(name = "Alice", city = "New York", age = 30)
+
+def modify_list(input_list: list) -> None:
+  """
+  Description:
+    Modifies input list by appending a new element.
+
+  Args:
+    input_list (list): The input list to be modified.
+  """
+  input_list.append("New Item")
+
+original_list = ["Item 1", "Item 2"]
+modify_list(original_list)
+print(original_list)
+
+def calculate(first_number: int, second_number: float = 1) -> None:
+    """
+    Description:
+        First number as int and second number as a float for division.
+    
+    This is to calculate addition, sub, multiplication, and division
+
+    Args:
+        first_number (int) To sum, subtract, multiply and divide.
+        second_number (float) To sum, subtract, multiply and divide.
+    """
+
+    add = first_number + second_number
+    sub = first_number - second_number
+    multiply = first_number * second_number
+    divide = first_number / second_number
+    
+    print(f"Additional: {add}")
+    print(f"Subtraction: {sub}")
+    print(f"Multiplication: {multiply}")
+    print(f"Division: {divide}")
+
+calculate(10)
+print()
+
+calculate(20, 5)
+print()
+
+calculate(first_number = 15)
+print()
+
+calculate(first_number = 12, second_number = 3)
 #def integration() -> None:
 #    """
 #    #Description:
