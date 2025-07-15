@@ -17,8 +17,8 @@ age = 24
 
 def greet_name_age(name: str, age: int)->str:
     """
-    Prints a greeting which includes 
-    the values of the name and age arguments.
+    Description:
+        Prints a greeting which includes the values of the name and age arguments.
 
     Args:
         name (str): The name of the person to greet.
@@ -31,7 +31,8 @@ def greet_name_age(name: str, age: int)->str:
 
 def grade_outcome(grade: int) -> str:
     """
-    Provides a string outcome based on a grade argument.
+    Description:
+        Provides a string outcome based on a grade argument.
 
     Args:
         grade (int): The earned grade.
@@ -41,20 +42,24 @@ def grade_outcome(grade: int) -> str:
     """
     if grade > 90:
         output = "A+"
+
     elif grade >= 50:
         output = "Pass"
+
     else:
         output = "Fail"
+        
     return output
 
 def prompt_name_greeting()->str:
     """
-    Prompts the user for their name and city, and 
-    returns a phrase including both values.
+    Description:
+        Prompts the user for their name and city, and returns a phrase including both values.
 
     Args:
         name (int): The first operand.
         city (int): The second operand.
+
     Returns:
         str: A greeting with both argument values included.
     """
@@ -67,24 +72,28 @@ def prompt_name_greeting()->str:
 
 def math_operation(operand1: int, operand2: int, operation: str = "+")-> float:
     """
-    Returns the result of the specified operation based 
-    on the two operands.
+    Description:
+        Returns the result of the specified operation based on the two operands.
 
     Args:
         operand1 (int): The first operand.
         operand2 (int): The second operand.
         operation (str): The operation to perform, default = "+"
+
     Returns:
-        None
+        result (float): result of the specified operation based on the two operands.
+
     Raises:
         ValueError:  "Invalid operation." When operation is not + or -.
     """
-    
+
     if operation == "+":
         result = operand1 + operand2
+
     elif operation == "-":
         result = operand1 - operand2
+
     else:
-        raise ValueError("Invalid operation.")   
-    
+        raise ValueError("Invalid operation.")
+
     return result

@@ -238,3 +238,169 @@ Ran 1 test in 0.000s
 
 OK
 ```
+
+## Review Values
+
+- Functions can return a value using the return keyword, followed by the value to be returned.
+- When a return statement is executed, the function exits, and the returned value is passed back to the caller.
+- Code the following function
+
+- Test the function:
+
+```cs
+result = math_operation(1,3, "+")
+print(result)
+
+print(math_operation(6,10, "-"))
+```
+
+- What happens if an operator other than + or - is provided to the function?
+- Try calling the math_operation function with "*" operation
+
+```cs
+print(math_operation(5, 5, "*"))
+# expected 25, actual 0
+```
+
+it is defaulted to subtract due because of else
+
+## Functions.Py
+
+- Return to functions.py 
+- Review the grade_outcome function.
+- What are the possible outcomes?
+
+- Outcomes:
+  1. A grade greater than 90 "A" + is returned
+  2. A grade between 50 and 90 inclusive, a grade of "Pass" is returned
+  3. Otherwise, a grade a "Fail" is returned
+
+```cs
+def grade_outcome(grade: int) -> str:
+    """
+    Description:
+        Provides a string outcome based on a grade argument.
+
+    Args:
+        grade (int): The earned grade.
+    
+    Returns:
+        str: The string equivalent to the grade.
+    """
+    if grade > 90:
+        output = "A+"
+
+    elif grade >= 50:
+        output = "Pass"
+
+    else:
+        output = "Fail"
+```
+
+## Second Set Of Tests
+
+1. A grade greater than 90, "A+' is returned
+  - Import the grade_outcome function into test_function.py
+
+```cs
+from src. functions import greet_name_age, grade_outcome
+```
+
+- Write the first test:
+
+```cs
+def test_grade_outcome_a_plus(self):
+    # Arrange
+    grade = 91
+    expected = "A+"
+ 
+    # Act
+    actual = grade_outcome(grade)
+ 
+    # Assert
+    self.assertEqual(expected, actual)
+```
+
+- Run the test:
+
+```cs
+python -m unittest -k test_grade_outcome_a_plus
+
+```
+
+- Or To Run All Test in a file you can use the following command:
+
+## Next Test
+
+- Define a test fora second outcome:
+
+- A grade between 50 and 90 inclusive, a grade of 'Pass' is returned
+
+```cs
+def test_grade_outcome_pass(self):
+  # Arrange 
+  grade = 76 
+  expected = "Pass"
+
+  # Act
+  actual = grade_outcome(grade)
+
+  # Assert 
+  self.assertEqual(expected, actual)
+```
+
+- Run the test:
+
+```cs
+python -m unittest tests/test_functions.py
+
+Ran 3 tests in 0.000s
+
+OK
+```
+
+## Edge Cases
+
+- We want to make sure that the edge cases for a grade between 50 and 90 inclusive are also handled so that an invalid grade is not assigned incorrectly when on the cusp of a grade change.
+
+- Modify the previous test as follows:
+
+```cs
+def test_grade_outcome_pass(self):
+    # Arrange
+    grade = 76
+    low_edge = 50
+    high_edge = 90
+    expected = "Pass"
+  
+    # Act
+    # COMMENT OUT actual = grade_outcome(grade)
+ 
+    # Act and Assert, including edge cases
+    self.assertEqual(expected, grade_outcome(grade))
+    self.assertEqual(expected, grade_outcome(low_edge)))
+    self.assertEqual(expected, grade_outcome(high_edge)))
+```
+
+- Run the tests and ensure it passes
+
+## Next Test
+
+- Define a test for the third outcome:
+- Otherwise a grade of 'Fail' is returned
+
+```cs
+def test_grade_outcome_fail(self):
+    # Arrange
+    grade = 40
+    high_edge = 49
+    negative = -1
+    expected = "Fail"
+
+    # Act and Assert, including edge cases
+    self.assertEqual(expected, grade_outcome(grade))
+    self.assertEqual(expected, grade_outcome(high_edge)))
+    self.assertEqual(expected, grade_outcome(negative)))
+```
+
+- Run the test and ensure it passes

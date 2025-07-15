@@ -36,36 +36,35 @@ class TestFunctions(unittest.TestCase):
         grade = 91
         expected = "A+"
 
-        # Act 
+        # Act
         actual = grade_outcome(grade)
 
-        # Assert 
+        # Assert
         self.assertEqual(expected, actual)
 
-    def test_grade_outcome_pass(self):
-        # Arrange
-        grade = 76
-        expected = "Pass"
-
-        # Act 
-        actual = grade_outcome(grade)
-
-        # Assert 
-        self.assertEqual(expected, actual)
-
-    
     def test_grade_outcome_pass(self):
         # Arrange
         grade = 76
         low_edge = 50
         high_edge = 90
-        expected = "Pass"
+        expected = "A+"
 
         # Act
-        # Comment out actual = grade_outcome(grade)
+        # Commented out actual = grade_outcome(grade)
 
         # Act and Assert, including edge cases
         self.assertEqual(expected, grade_outcome(grade))
         self.assertEqual(expected, grade_outcome(low_edge))
+        self.assertEqual(expected, grade_outcome(high_edge))
 
-        
+    def test_grade_outcome_fail(self):
+        # Arrange
+        grade = 40
+        high_edge = 49
+        negative = -1
+        expected = "Fail"
+
+        #Act and Assert, including edge cases
+        self.assertEqual(expected, grade_outcome(grade))
+        self.assertEqual(expected, grade_outcome(high_edge))
+        self.assertEqual(expected, grade_outcome(negative))
