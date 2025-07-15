@@ -99,14 +99,86 @@ def math_operation(operand1: int, operand2: int, operation: str = "+")-> float:
 
     return result
 
-
-def integration() -> None:
+def get_square_of_number(number: int) -> int:
     """
     Description:
-    
+        Prints the square of three number to the console individually.
+  
+    Printing each number individually with their designed example.
+
+    Args:
+        numbers (int): The number we will square
+  
+    Return:
+        returns the squared as an integer
     """
-    print(math_operation(1, 2, "+"))
-    print(prompt_name_greeting())
+
+    return number ** 2
+print(get_square_of_number(2))
+print(get_square_of_number(5))
+print(get_square_of_number(10))
+
+
+
+
+
+
+def get_area_and_perimeter(width: float, height: float) -> tuple[float, float]:
+    """
+    Description:
+        Returns the area and perimeter of a rectangle.
+  
+    Given the width and height as arguments, this function calculates the area and perimeter of the rectangle.
+
+    Args:
+        width(float): The width of a rectangle.
+        height(float): The height of a rectangle.
+
+    Returns:
+        Tuple[float, float]: A tuple containing the area and perimeter of the rectangle, in that order.
+    """
+    area = width * height
+    perimeter = 2 * (width + height)
+    return area, perimeter
+
+# Storing returned values in separate variables
+area, perimeter = get_area_and_perimeter(5, 7)
+print(f"Area: {area}, Perimeter: {perimeter}")
+
+# Using the returned tuple directly
+result = get_area_and_perimeter(3, 4)
+print(f"Area: {result[0]}, Perimeter: {result[1]}")
+
+def get_product_and_quotient(number1: float, number2: float) -> tuple[int, float]:
+    """
+    Description:
+        Prints the quotient of two numbers to the console
     
-if __name__ == "__main__":
-    integration()
+    
+    Args:
+        number1 (float): number1 as float for product and quotient
+        number2 (float): number2 as float for product and quotient
+
+    Returns:
+        Returns as int and float for product and quotient
+    """
+    product = number1 * number2
+    quotient = number1 / number2
+    return product, quotient
+
+print(get_product_and_quotient(2,3))
+print(get_product_and_quotient(5,2))
+print(get_product_and_quotient(10,5))
+
+#def integration() -> None:
+#    """
+#    #Description:
+    
+#    #"""
+#    print(math_operation(1, 2, "+"))
+#    print(prompt_name_greeting())
+#    
+#if __name__ == "__main__":
+#    integration()
+
+    

@@ -683,4 +683,355 @@ def method_identifier(parameter_list, ...):
     # Implementation
 ```
 
-In Python, functions are defined using the def keyword, followed by a unique function identifier, paraentheses containing parameters (optional), and a colon(:)
+In Python, functions are defined using the def keyword, followed by a unique function identifier, parentheses containing parameters (optional), and a colon(:).
+
+The standard for function identifiers is to use the snake_case naming convention which means they should be lowercase and use underscores to separate words.
+
+The function body is indented and contains the code to be executed. The body of a function is known as the function's implementation.
+
+Here's an example of a simple function definition:
+
+```py
+def print_greeting(name: str) -> str:
+  """
+  Description:
+    Prints a personalized greeting message to the console and returns the message.
+
+    When called with a name, this function prints the mesage "Hello, {name}!" to the console and returns the message as a string.
+  
+  Args:
+    name(str): The name of the person to be greeted.
+
+  Returns:
+    str: The greeting message.
+  """
+  greeting_message = f"Hello, {name}!"
+  print(greeting_message)
+  return greeting_message
+```
+
+Here's a detailed explanation of how this function works:
+
+1. The function now accepts a single argument, **name**, with the type annotation **str**. The type annotation indicates that the **name** argument should a be string.
+
+    ```py
+    def print_greeting(name: str) -> str:
+    ```
+
+2. The updated docstring reflects the changes made to the function, explaining that it now accepts a **name** argument and returns a string.
+
+    ```py
+    """
+    Description:
+      Prints a personalized greeting message to the console and returns the message. When called with a name, this function prints the message "Hello, {name}!" to the console and returns the message as a string. 
+    
+    Args:
+      name (str): The name of a person to be greeted.
+    
+    Returns:
+      str: The greeting message.
+    """
+    ```
+
+3. The function body now creates a **greeting_message** variable using an f-string which embeds the **name** argument within the message.
+
+    ```py
+    greeting_message = f"Hello, {name}"
+    ```
+
+4. The print() statement is still used to output the greeting message to the console.
+
+   
+    ```py
+    print(greeting_message)
+    ```
+  
+5. The function returns the **greeting_message** as its result.
+
+    ```py
+    return greeting_message
+    ```
+
+6. Finally, to invoke the function, call it with a name as an argument:
+
+    ```py
+    greeting = print_greeting("John")
+    ```
+
+## Function Parameters
+
+Parameters are special variables that store the values of arguments passed along when the function is called. A function can be defined with or without parameters.
+
+Here's an example of a function with a single parameter:
+
+```py
+def print_greeting(name: str) -> None:
+  """
+  Description:
+    Prints a personalized greeting message to the console.
+
+  Given a name as an argument, ths function prints a personalized greeting message to the console.
+
+  Args:
+    name (str) The name of the person to greet
+  """
+
+  print(f"Hello, {name}!")
+```
+
+Here's an example of a function with multiple parameters:
+
+```py
+def display_greet(first_name: str, last_name: str age: int) -> None:
+  """
+  Description:
+    Prints a personalized greeting message to the console.
+
+  Given the first name, last name, and age as arguments this function prints a personalized greeting message to the console.
+
+  Args:
+    first_name (str): The First name of the person to greet.
+    last_name (str): The last name of the person to greet.
+    age (int): The age of the person to greet.
+  """
+
+  print(f"Hello, {first_name} {Last_name}! You are {age} years old.")
+```
+
+The function above accepts three arguments, enclosed in parentheses ():
+
+1. first_name with the type annotation str, indicating that this argument should be a string representing a person's first name.
+
+    ```py
+    first_name: str
+    ```
+
+2. last_name with the type annotation str, indicating that this argument should be a string representing a person's last name.
+
+    ```py
+    last_name: str
+    ```
+
+3. age with the type annotation int, indicating that this argument should be a int representing a person's age.
+
+    ```py
+    age: int
+    ```
+
+To call a function use the function name followed by the parentheses containing any required arguments. The arguments must match the order and number of parameters defined in the function.
+
+Examples of invoking functions.
+
+```py
+# Invoking the greet() function
+greet("Alice")
+
+# Invoking the display_greet() function
+display_greeting("Alice", "Johnson", 25)
+display_greeting("Bob", "Smith", 25)
+```
+
+## Function Return Values
+
+Functions can return a value using the **return** keyword, followed by the value to be returned. When a return statement is executed, the function exits, and the returned value is passed back to the caller. if a function does not have a return statement or reaches the end of the function without encountering a return statement, it will implicitly return None.
+
+Here's an example of a function that returns the sum of two numbers:
+
+```py
+def add_numbers(first_number: int, second_number: int) -> int: 
+  """
+  Description:
+    Returns the sum of two numbers.
+  
+  Given the two numbers as arguments, this function returns their sum.
+
+  Args:
+    first_number (int): The first number to add.
+    second_number (int): The second number to add.
+
+  Returns:
+    int: The sum of first and second number.
+  """
+  sum = first_number + second_number
+  return sum
+```
+
+The -> **int** following the argument list indicates the return type of the function. In this case, the function is expected to return an integer value.
+
+```py
+-> int
+```
+
+And here's an example of a function without a return statement, which implicitly returns None:
+
+```py
+def print_sum_of_numbers(first_number: int, second_number: int) -> None:
+  """
+  Description:
+    Prints the sum of two numbers to the console.
+
+  Given two numbers as arguments, this function prints their sum to the console.
+
+  Args:
+    first_number (int): The first number to add.
+    second_number (int): The second number to add. 
+  """
+
+  sum = first_number + second_number
+  print(sum)
+```
+
+## None Refresher
+
+**None** represents the absence of a value or a null value. You'll encounter it being used in a few ways with Python:
+    - Default Value for optional function parameters
+    - Placeholder for uninitialized variables.
+    - Default return value for functions that do not explicitly return a value.
+
+## Programming Challenge 1
+
+1. Define a function called get_square_of_number() that accepts one argument (a number) and returns its square.
+2. Test your function by calling it with different numbers and printing the output.
+Example
+
+```py
+print(get_square_of_number(2))
+print(get_square_of_number(5))
+print(get_square_of_number(10))
+```
+
+Output
+
+```py
+4
+25
+100
+```
+
+```py
+def get_square_of_number(number: int) -> int:
+  """
+  Description:
+    Prints the square of one number to the console individually.
+  
+  Printing each number individually with their designed example.
+
+  Args:
+    numbers (int): The number we will square
+  
+  Return:
+    returns the squared as an integer
+  """
+
+  return = number ** 2
+
+print(get_squared_of_number(2))
+print(get_squared_of_number(5))
+print(get_squared_of_number(10))
+```
+
+## Function Types And Use Case
+
+### **Simple Functions**
+
+Simple functions perform a single task without neeeding parameters or returning a value. They are helpful for repeated tasks in your program. Here's an example of a simple function:
+
+```py
+def print_separator() -> None:
+  """
+  Description:
+    Prints a seperator line to the console.
+
+  This function prints a seperator line consisting of asterisks to the console. The line has a length of 24 asterisks.
+  """
+
+  print("************************")
+
+print("Section 1")
+print_separator()
+
+print("Section 2")
+print_separator()
+```
+
+## Functions Returning Multiple Values (Tuples)
+
+In Python, functions can return multiple values using tuples. A tuple is an ordered, unchangeable collection of elements enclosed in parentheses. When a function returns multiple values, the caller can store them in seperate variables or use them as a tuple.
+
+Example of  function returning multiple values using a tuple:
+
+```py
+def get_area_and_perimeter(width: float, height: float) -> tuple[float, float]:
+  """
+  Description:
+    Returns the area and perimeter ofa rectangle.
+  
+  Given the width and height of a as arguments, this function calculates the area and perimeter of the rectangle.
+
+  Args:
+    width(float): The width of a rectangle.
+    height(float): The height of a rectangle.
+
+  Returns:
+    Tuple[float, float]: A tuple containing the area and perimeter of the rectangle, in that order.
+
+  area = width * height
+  perimeter = 2* (width + height)
+  return area, perimeter
+  """
+
+# Storing returned values in separate variables
+area, perimeter = get_area_and_perimeter(5,7)
+print(f"Area: {area}, Perimeter: {perimeter}")
+
+# Using the returned tuple directly
+result = get_area_and_perimeter(3,4)
+print(f"Area: {result[0]}, Perimeter: {result[1]}")
+```
+
+## Programming Challenge 2
+
+Define a function called get_product_and_quotient() that accepts two arguments (two numbers) and returns their product and quotient as a tuple.
+
+Test your function by calling it with different sets of numbers and printing the output.
+
+Example Output:
+
+```py
+print(get_product_and_quotient(2, 3))    # Output: (6, 0.6666666666666666)
+print(get_product_and_quotient(5, 2))    # Output: (10, 2.5)
+print(get_product_and_quotient(10, 5))   # Output: (50, 2.0)
+```
+
+```py
+def get_product_and_quotient(number1: float, number2: float) -> tuple[float, float]:
+  
+```
+
+## Review Questions
+
+1. What are the benefits of using functions in Python programs?
+Code reusability, Code Readability, Easier to debug and test codes.
+
+2. How  do you define a function in Python?
+Using def keyword, by function name, parentheses a colon and indented block of code.
+
+3. What is the purpose of parameters in a function?
+The purpose of parameters is to allow functions to be receive input values.
+
+4. How do you return a value from a function?
+You'll need to use the keyword function called return.
+
+5. What are simple function, and what are their benefits?
+Simple functions takes no parameters, does not return values, performs single tasks.
+    - Code readability
+    - Reuseable code
+    - Organization
+    - Cleaner and more organized structure codes.
+
+6. How do you return multiple values from a function using tuples?
+You can return multiple tuples from a function by separating them with commas
+
+## Parameters And Arguments
+
+- Sleep, Wake up and code C: 1:56 AM
