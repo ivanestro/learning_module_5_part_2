@@ -452,3 +452,112 @@ from unittest.mock import patch
 - When testing a function that uses the input function, you might want to simulate user input without acutally requiring user interaction
 
 - By 'patching' the input function you can control what values are returned by input during the test, allowing you to test different scenarios and edge cases.
+  - Aka: WE make our own input() function that will automatically return what we want it to
+
+## Slide 38 Functions.Py
+
+- Return to functions.py
+- Review the math_operations function
+- What are the possible outcomes?
+
+```cs
+def math_operation(grade: int) -> str:
+    if operation == "+":
+        result = operand1 + operand2
+    elif operation == "-":
+        result = operand1 - operand2
+    else:
+        raise ValueError("Invalid operation.")   
+    
+    return result
+```
+
+- Outcomes:
+  - Successful Addition
+  - Successful Subtraction
+  - Successful An invalid operation
+  - Successful non-numeric operand
+
+## Fourth Set Of Tests
+
+- Update the import statment and create the first 2 tests:
+
+```cs
+def test_math_operations_successful_add(self):
+    # Arrange
+    op1 = 10
+    op2 = 20
+    opt = "+"
+    expected = 30
+
+    # Act
+    actual = math_operation(op1, op2, opt)
+
+    # Assert
+    self.assertEqual(expected, actual)
+
+
+```
+
+```cs
+def test_math_operations_successful_sub(self):
+    # Arrange
+    op1 = 30
+    op2 = 20
+    opt = "-"
+    expected = 10
+
+    # Act
+    actual = math_operation(op1, op2, opt)
+
+    # Assert
+    self.assertEqual(expected, actual)
+
+```
+
+- Run the tests:
+
+```cs
+Ran 6 tests in 0.000s
+OK
+```
+
+## Testing Exceptions
+
+- Outcome to test:
+  - An exception when an invalid operation is provided.
+
+- The unittest.testcase class has built in functionality to confirm that under certain conditions an exception is raised.
+
+- The `assertRaises' context manager (with clause) encloses the code that should raise the exception
+  - (e.g a call to a function with invalid parameters).
+
+- The assertRaises will confirm that an exception has been raised.
+
+- Additionally when an exception is raised within the assertRaises context manager (with the handle `context' below): the context object can be queried for the actual exception message.
+
+- A second assert can be used to verify the correct error message:
+
+```cs
+def test_math_operation_bad_operator_raises_exception(self):
+    # Arrange
+    operand1 = 30
+    operand2 = 20
+    operator = "*"
+    expected = "Invalid operation."
+
+    # Act and Assert
+    # assertRaises(ValueError) <-- because function raises 
+    # ValueError when an invalid operator is provided
+    with self.assertRaises(ValueError) as context:
+        math_operation(operand1, operand2, operator)
+            
+    self.assertEqual(expected, str(context.exception))
+```
+
+- Run the tests:
+
+```cs
+Ran 7 tests in 0.000s
+OK
+```

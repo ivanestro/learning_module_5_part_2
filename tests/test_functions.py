@@ -12,7 +12,7 @@ Usage: To execute the unit tests:
 
 import unittest
 from unittest.mock import patch
-from src.functions import greet_name_age, grade_outcome, prompt_name_greeting
+from src.functions import greet_name_age, grade_outcome, prompt_name_greeting, math_operation
 
 
 class TestFunctions(unittest.TestCase):
@@ -85,4 +85,45 @@ class TestFunctions(unittest.TestCase):
 
             # Assert
             self.assertEqual(expected, actual)
-            
+    
+    def test_math_operations_successful_add(self):
+        # Arrange
+        op1 = 10
+        op2 = 20
+        opt  = "+"
+        expected = 30
+
+        # Act
+        actual = math_operation(op1, op2, opt)
+
+        # Assert
+        self.assertEqual(expected, actual)
+
+    
+    def test_math_operations_successful_sub(self):
+        # Arrange
+        op1 = 30
+        op2 = 20
+        opt = "-"
+        expected = 10
+
+        # Act 
+        actual = math_operation(op1, op2, opt)
+
+        # Assert
+        self.assertEqual(expected, actual)
+
+    def test_math_operation_bad_operator_raises_exception(self):
+        # Arrange
+        operand1 = 30
+        operand2 = 20
+        operator = "*"
+        expected = "Invalid operation."
+
+        # Act and Assert
+        # assertRaises(ValueError) <-- Because function raises
+        # ValueError when an invalid operator is provided
+        with self.assertRaises(ValueError) as context:
+            math_operation(operand1, operand2, operator)
+
+        self.assertEqual(expected, str(context.exception))
