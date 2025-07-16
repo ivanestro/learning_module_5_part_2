@@ -253,6 +253,58 @@ calculate(first_number = 15)
 print()
 
 calculate(first_number = 12, second_number = 3)
+
+def greet_name(name: str) -> str:
+  """
+  Description:
+    Returns a greeting message.
+
+  Args:
+    name (str): The name of the person to greet
+
+  Returns:
+    str: A greeting message.
+  """
+  return f"Hello, {name}!"
+
+def greet_twice(name: str) -> None:
+    """
+    Description:
+        Prints a greeting message twice.
+
+    Args:
+        name (str): The name of the person to greet
+    """
+print(greet(name))
+print(greet(name))
+
+
+def square(number: int) -> int:
+    """
+    Description:
+        Returns the square of a number.
+
+    Args:
+        number(int): The number of a square. 
+    """
+
+    return number ** 2
+
+def square_sum(first_number: int, second_number: int) -> int:
+    """
+    Description:
+        Returns the sum of the squares of two numbers.
+
+    Args:
+        first_number (int): The first number.
+        second_number (int): The second number.
+
+    Returns:
+        int: The sum of the square of the numbers.
+    """
+
+    return square(first_number) + square(second_number)
+
 #def integration() -> None:
 #    """
 #    #Description:

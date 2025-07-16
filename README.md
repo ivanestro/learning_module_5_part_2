@@ -1237,3 +1237,133 @@ Division: 4.0
     Immutable cannot be changed inside a function if you try to modify them a new object is created instead.
 
     Mutable object can be changed inside a function where the original values will not be affected but can just add things inside the existing ones. An inventory for example.
+
+## Function Call Within Functions
+
+### Nested Function Calls
+
+Functions can call other functions within their bodies. This is useful for breaking down complex tasks into simpler sub-tasks, and its a common practice in programming. Each function call is independent; changes made to variables within a function do not affect other functions.
+
+Here's an example:
+
+```py
+def greet(name: str) -> str:
+  """
+  Description:
+    Returns a greeting message.
+
+  Args:
+    name (str): The name of the person to greet
+
+  Returns:
+    str: A greeting message.
+  """
+  return f"Hello, {name}!"
+
+def greet_twice(name: str) -> None:
+  """
+  Description:
+    Prints a greeting message twice.
+
+  Args:
+    name (str): The name of the person to greet
+
+  print(greet(name))
+  print(greet(name))
+```
+
+In the above example, the greet_twice function calls the greet function twice. This demonstrates how functions can be reused to prevent code duplication.
+
+## The Call Stack
+
+When a function is called, Python creates a new execution context for that call, including a new namespace for variables. This context is added to the top of the "call stack" a structure that Python uses to keep track of function calls. When the function finishes, its execution context is removed from the stack, and control returns to the previous context.
+
+This means that variables within a function are separate from variables outside the function, evn if they have the same name. This property, known as variable scoping, prevents variables in one function from interfering with those in another.
+
+The following is a sample example of a call stack:
+
+```cs
+Call Stack:
+-----------
+|         |
+| func C  |
+|---------|
+| func B  |
+|---------|
+| func A  |
+|---------|
+|  Main   |
+-----------
+```
+
+The above is a simplified, linear visualization. Each box represents a different function call, and the order of the boxes represents the order of the function calls (from bottom to top). You can replace "funcA", "funcB", etc. with the actual names of your function. The 'Main' refers to the main program context. The box at the top represents the function currently being executed. When that function completes, it is removed from the "stack", and the next function down becomes the current function.
+
+## Returning A Function Call
+
+Functions can also return the result of calling another function. This is a powerful technique that allows functions to be composed together to perform more complex operations.
+
+Here's an example:
+
+```py
+def square(number: int) -> int:
+    """Returns the square of a number.
+
+    Args:
+        number (int): The number to square.
+
+    Returns:
+        int: The square of the number.
+    """
+
+    return number ** 2
+
+def square_sum(first_number: int, second_number: int) -> int:
+    """Returns the sum of the squares of two numbers.
+
+    Args:
+        first_number (int): The first number.
+        second_number (int): The second number.
+
+    Returns:
+        int: The sum of the squares of the numbers.
+    """
+
+    return square(first_number) + square(second_number)
+```
+
+In the above example, the square_sum function calls the square function twice, adding together the result
+
+## Review Questions Function Calls Within Functions
+
+1. How can functions call other functions within their bodies?
+    To call other function within their bodies to to use the name of the function they want to call using parentheses example 
+
+    ```py
+        def greet():
+          print("Hello")
+
+        def introduce():
+          greet()
+          print("Welcome to the program")
+
+    introduce()
+    ```
+
+2. What is the call stack and how does it relate to function execution?
+    Call stack is a data structure to keep track of functions during execution of a program.
+
+    It Controls the order that function is run, pause or return to make sure that your code runs smoothly.
+
+3. What does it mean to return a function call from another function?
+    You call a function to another function and return the result of that first function call which then translates to your second function and outer of it will call the result example.
+
+```py
+    def add(a, b):
+      return a + b
+
+    def calculate():
+    return add(3, 4)  # return the result of calling add(3, 4)
+
+result = calculate()
+print(result)  # Output: 7
+```
