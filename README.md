@@ -1367,3 +1367,13 @@ In the above example, the square_sum function calls the square function twice, a
 result = calculate()
 print(result)  # Output: 7
 ```
+
+## FINISH THE REST
+
+Reading Them And Finish The Rest Later.
+
+- Scope
+- Function Documentation
+- Unit Testing
+- Unit Testing Standards & Best Practices
+- Unit Testing Techniques
